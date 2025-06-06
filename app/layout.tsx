@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} antialiased bg-gray-50 text-gray-950   relative  h-[1000px] `}
+        className={`${interSans.variable} antialiased bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  `}
       >
         <div
           className={`bg-[#fbe2e3] absolute top-[-6rem] right-[11rem] w-[31.25rem] h-[31.25rem]  -z-10 rounded-full  blur-[10rem] sm:w-[68.75rem]`}
