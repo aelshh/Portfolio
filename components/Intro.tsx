@@ -46,7 +46,7 @@ export const Intro = () => {
           </motion.span>
         </div>
       </div>
-      <motion.p
+      <motion.h1
         initial={{
           y: 100,
           opacity: 0,
@@ -55,42 +55,60 @@ export const Intro = () => {
           y: 0,
           opacity: 1,
         }}
-        className="mb-10 text-2xl sm:text-4xl !leading-[1.5] mt-5 font-medium  px-4"
+        className="mb-10 text-2xl sm:text-4xl !leading-[1.5] mt-5   px-4"
       >
         <span className="font-bold"> Hello I'm Adarsh. </span> I'm a{" "}
         <span className="font-bold"> full-stack web developer </span> with{" "}
         <span className="font-bold"> 1 year </span> of experience. I enjoy
-        building <span className="italic">sites & apps</span> . My focus is
+        building <span className="italic">sites & apps</span>. My focus is
         {"  "}
-        <span className="underline">React (Next.js)</span>.
-      </motion.p>
-      <div className="flex justify-center gap-2 px-4 items-center flex-col sm:flex-row text-lg font-medium">
+        <span className="underline">React (Next.js)</span>
+      </motion.h1>
+      <motion.div
+        className="flex justify-center gap-2 px-4 items-center flex-col sm:flex-row text-lg font-medium"
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 0.1,
+        }}
+      >
         <Link
           href="#contact"
-          className="flex items-center  bg-gray-900 px-7 py-3  text-white rounded-full gap-2"
+          className=" group flex items-center  bg-gray-900 px-7 py-3  text-white rounded-full gap-2   hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105 transition"
         >
-          Contact me here <BsArrowRight />{" "}
+          Contact me here{" "}
+          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition  translate-y-0.5" />{" "}
         </Link>
         <a
-          href="#"
-          className=" flex items-center  bg-white px-7 py-3   rounded-full gap-2"
+          href="/CV.pdf"
+          download
+          className=" group flex items-center  bg-white px-7 py-3   rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border border-black/10 "
         >
-          Download CV <HiDownload />{" "}
+          Download CV{" "}
+          <HiDownload className="opacity-70 group-hover:translate-y-1 transition" />{" "}
         </a>
         <a
-          href="#"
-          className=" flex items-center  bg-white p-4 text-gray-700 rounded-full gap-2"
+          href="https://www.linkedin.com/in/adarsh-chaudhary-369429278/"
+          target="_blank"
+          className=" flex items-center  bg-white p-4 text-gray-700 rounded-full gap-2 hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition "
         >
           <BsLinkedin />
         </a>
         <a
-          href="#"
+          href="https://github.com/aelshh"
+          target="_blank"
           className=" flex items-center  bg-white p-4 text-gray-700 
-          text-[1.1rem] rounded-full gap-2"
+          text-[1.1rem] rounded-full gap-2  hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition "
         >
           <FaGithub />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 };
