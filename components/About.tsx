@@ -1,13 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { SectionHeading } from "./SectionHeading";
 import { motion } from "framer-motion";
+import useActiveSectionContext from "@/context/ActiveSectionContext";
+import { useSectionInView } from "@/lib/hooks";
 
 export const About = () => {
+  const { ref } = useSectionInView("About");
   return (
     <motion.section
-      className="text-center mb-28 max-w-[45rem] sm:mb-40"
+      ref={ref}
+      id="about"
+      className="text-center mb-28 max-w-[45rem] sm:mb-40 scroll-mt-50"
       initial={{
         opacity: 0,
         y: 100,

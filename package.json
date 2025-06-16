@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-vertical-timeline-component": "^3.3.6",
+    "clsx": "^2.1.1",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-vertical-timeline-component": "^3.5.3",
+    "resend": "0.16.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@react-email/components": "^0.0.42",
+    "@react-email/tailwind": "^1.0.5",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

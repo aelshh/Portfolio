@@ -8,9 +8,18 @@ import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
 
+import { useSectionInView } from "@/lib/hooks";
+import useActiveSectionContext from "@/context/ActiveSectionContext";
+
 export const Intro = () => {
+  const { ref } = useSectionInView("Home", 0.5);
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   return (
-    <section className=" mb-28 text-center  max-w-[50rem] sm:mb-0">
+    <section
+      ref={ref}
+      id="home"
+      className=" mb-28 text-center  max-w-[50rem] sm:mb-0 scroll-mt-[100rem]"
+    >
       <div className="flex justify-center items-center">
         <div className="relative">
           <motion.div
@@ -79,6 +88,10 @@ export const Intro = () => {
         }}
       >
         <Link
+          onClick={() => {
+            setActiveSection("Contact");
+            setTimeOfLastClick(Date.now());
+          }}
           href="#contact"
           className=" group flex items-center  bg-gray-900 px-7 py-3  text-white rounded-full gap-2   hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105 transition"
         >
@@ -88,7 +101,7 @@ export const Intro = () => {
         <a
           href="/CV.pdf"
           download
-          className=" group flex items-center  bg-white px-7 py-3   rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border border-black/10 "
+          className=" group flex items-center  bg-white px-7 py-3   rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border borderBlack "
         >
           Download CV{" "}
           <HiDownload className="opacity-70 group-hover:translate-y-1 transition" />{" "}

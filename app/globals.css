@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+html {
+  --line-color: #e5e7eb;
+}
+
+@layer components {
+  .borderBlack {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}

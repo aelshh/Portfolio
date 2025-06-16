@@ -25,7 +25,7 @@ export default function ProjectCard({
 
   return (
     <motion.div
-      id="projects"
+     
       ref={ref}
       className="mb-3 sm:mb-8 group scroll-mt-70"
       style={{
