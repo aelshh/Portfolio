@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "patch-package",
+    "prepare": "patch-package"
   },
   "dependencies": {
     "@react-email/render": "^1.1.2",
@@ -33,6 +35,8 @@
     "eslint-config-next": "15.3.3",
     "eslint-plugin-react": "^7.37.5",
     "framer-motion": "^12.16.0",
+    "patch-package": "^6.5.1",
+    "postinstall-postinstall": "^2.1.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
