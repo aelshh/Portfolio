@@ -6,7 +6,7 @@ const FormSubmitBtn = () => {
   const { pending } = useFormStatus();
   return (
     <button
-      className="flex  group cursor-pointer items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none  transition-all hover:scale-110  active:scale-105 disabled:opacity-65 disabled:scale-100 "
+      className="flex  group cursor-pointer items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none  transition-all hover:scale-110  active:scale-105 disabled:opacity-65 disabled:scale-100 dark:bg-white/10"
       disabled={pending}
     >
       {pending ? (

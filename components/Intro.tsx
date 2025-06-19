@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import picofme from "@/public/picofme.png";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -32,7 +33,7 @@ export const Intro = () => {
           >
             <Image
               className="rounded-full h-25 w-24 object-cover object-top border-white border-[0.35rem] shadow-xl"
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
+              src={picofme}
               width="192"
               height="192"
               priority={true}
@@ -101,7 +102,7 @@ export const Intro = () => {
         <a
           href="/CV.pdf"
           download
-          className=" group flex items-center  bg-white px-7 py-3   rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border borderBlack "
+          className=" group flex items-center  bg-white px-7 py-3   rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border borderBlack dark:bg-white/10 dark:text-white/80  "
         >
           Download CV{" "}
           <HiDownload className="opacity-70 group-hover:translate-y-1 transition" />{" "}
@@ -109,7 +110,7 @@ export const Intro = () => {
         <a
           href="https://www.linkedin.com/in/adarsh-chaudhary-369429278/"
           target="_blank"
-          className=" flex items-center  bg-white p-4 text-gray-700 rounded-full gap-2 hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition "
+          className=" flex items-center  bg-white p-4 text-gray-700 rounded-full gap-2 hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition  dark:bg-white/10 dark:text-white/80"
         >
           <BsLinkedin />
         </a>
@@ -117,7 +118,7 @@ export const Intro = () => {
           href="https://github.com/aelshh"
           target="_blank"
           className=" flex items-center  bg-white p-4 text-gray-700 
-          text-[1.1rem] rounded-full gap-2  hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition "
+          text-[1.1rem] rounded-full gap-2  hover:text-gray-950 hover:scale-[1.15] focus:scale-110 active:scale-105 transition  dark:bg-white/10 dark:text-white/80"
         >
           <FaGithub />
         </a>

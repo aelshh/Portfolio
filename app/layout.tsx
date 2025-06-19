@@ -4,6 +4,9 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { ActiveSectionContextProvider } from "@/context/ActiveSectionContext";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/Footer";
+import ThemeSwitchBtn from "@/components/ThemeSwitchBtn";
+import { ThemeSwitchContextProvider } from "@/context/ThemeSwitchContext";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -24,21 +27,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth ">
       <body
-        className={`${interSans.variable} antialiased bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  `}
+        className={`${interSans.variable} antialiased  bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90  `}
       >
         <div
-          className={`bg-[#fbe2e3] absolute top-[-6rem] right-[11rem] w-[31.25rem] h-[31.25rem]  -z-10 rounded-full  blur-[10rem] sm:w-[68.75rem]`}
+          className={`bg-[#fbe2e3] absolute top-[-6rem] right-[11rem] w-[31.25rem] h-[31.25rem]  -z-10 rounded-full  blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]`}
         ></div>
         <div
-          className={`bg-[#dbd7fb] absolute top-[-1rem] left-[-35rem] w-[31.25rem]  -z-10 h-[50rem] blur-[10rem] rounded-full sm:w-[68.75rem]  md:left-[-33rem] lg:left-[-28rem] xl:left-[15rem] 2xl:left-[-5rem]   `}
+          className={`bg-[#dbd7fb] absolute top-[-1rem] left-[-35rem] w-[31.25rem]  -z-10 h-[50rem] blur-[10rem] rounded-full sm:w-[68.75rem]  md:left-[-33rem] lg:left-[-28rem] xl:left-[15rem] 2xl:left-[-5rem] dark:bg-[#676394]  `}
         ></div>
 
-        <ActiveSectionContextProvider>
-          <Header />
-
-          {children}
-        </ActiveSectionContextProvider>
-        <Toaster position="bottom-right" />
+        <ThemeSwitchContextProvider>
+          <ActiveSectionContextProvider>
+            <Header />
+            {children}
+          </ActiveSectionContextProvider>
+          <Footer />
+          <Toaster position="bottom-right" />
+          <ThemeSwitchBtn />
+        </ThemeSwitchContextProvider>
       </body>
     </html>
   );
