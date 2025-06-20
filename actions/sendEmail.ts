@@ -21,7 +21,7 @@ export default async function sendEmail(formData: FormData) {
         message,
         senderEmail,
       }),
-      reply_to: senderEmail,
+      replyTo: senderEmail,
     });
   } catch (e) {
     const error = getErrorMessage(e);
