@@ -6,9 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "patch-package",
-    "prepare": "patch-package"
+    "lint": "next lint"
   },
   "dependencies": {
     "@react-email/render": "^1.1.2",
