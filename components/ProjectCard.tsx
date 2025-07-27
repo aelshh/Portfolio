@@ -5,6 +5,8 @@ import { useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type ProjectCardProps = (typeof projectsData)[0];
 
@@ -13,6 +15,7 @@ export default function ProjectCard({
   description,
   tags,
   imageUrl,
+  projectUrl,
 }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -32,31 +35,37 @@ export default function ProjectCard({
         opacity: opacityProgress,
       }}
     >
-      <section className=" rounded-lg group bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 even:sm:pr-6 relative  sm:h-[20rem]  dark:bg-white/10 hover:dark:bg-white/20 sm:group-even:pl-11 hover:bg-gray-200 transition ">
-        <div className="sm:max-w-1/2 px-7 pt-2 pb-8 sm:pl-10 sm:pr-2 sm:pt-10 flex flex-col h-full sm:group-even:ml-[18rem]    ">
-          <h2 className="text-2xl font-semibold">{title}</h2>
-          <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70 ">
-            {description}
-          </p>
-          <ul className="flex gap-2 flex-wrap mt-4 sm:mt-auto">
-            {tags.map((tag, index) => (
-              <li
-                key={index}
-                className="p-x-2 bg-black/[0.7] rounded-full px-3 py-1 text-[0.7rem] tracking-wider uppercase dark:text-white/70 text-white"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <Image
-          src={imageUrl}
-          alt="Project I worked on."
-          quality={95}
-          className=" group-even:right-[initial] hidden sm:block group-even:-left-40 absolute top-8 -right-40 rounded-t-xl w-[28.5rem] shadow-2xl group-hover:-translate-x-3   group-hover:scale-[1.04] group-hover:translate-y-3 group-hover:-rotate-2 transition
+      <section className=" rounded-lg group bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 even:sm:pr-6 relative    dark:bg-white/10 hover:dark:bg-white/20 sm:group-even:pl-11 hover:bg-gray-200 transition ">
+        <Link
+          href={projectUrl}
+          target="_blank"
+          className="flex flex-col sm:flex-row"
+        >
+          <div className="sm:max-w-1/2 px-7 pt-2 pb-8 sm:pl-10 sm:pr-2 sm:pt-10 flex flex-col h-full sm:group-even:ml-[18rem]    ">
+            <h2 className="text-2xl font-semibold">{title}</h2>
+            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70 ">
+              {description}
+            </p>
+            <ul className="flex gap-2 flex-wrap mt-5 ">
+              {tags.map((tag, index) => (
+                <li
+                  key={index}
+                  className="p-x-2 bg-black/[0.7] rounded-full px-3 py-1 text-[0.7rem] tracking-wider uppercase dark:text-white/70 text-white"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Image
+            src={imageUrl}
+            alt="Project I worked on."
+            quality={95}
+            className=" group-even:right-[initial] hidden sm:block group-even:-left-40 absolute top-8 -right-40 rounded-t-xl w-[28.5rem] shadow-2xl group-hover:-translate-x-3   group-hover:scale-[1.04] group-hover:translate-y-3 group-hover:-rotate-2 transition
         group-even:group-hover:translate-x-3 group-even:group-hover:rotate-3
         "
-        />
+          />
+        </Link>
       </section>
     </motion.div>
   );

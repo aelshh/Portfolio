@@ -68,11 +68,12 @@ export const Intro = () => {
         className="mb-10 text-2xl sm:text-4xl !leading-[1.5] mt-5   px-4"
       >
         <span className="font-bold"> Hello I'm Adarsh. </span> I'm a{" "}
-        <span className="font-bold"> full-stack web developer </span> with{" "}
-        <span className="font-bold"> 1 year </span> of experience. I enjoy
-        building <span className="italic">sites & apps</span>. My focus is
+        <span className="font-bold"> full-stack web developer </span>
+        <span className="font-bold"> since December 2023 </span>. I enjoy
+        building <span className="italic">sites & apps</span>with
         {"  "}
-        <span className="underline">React (Next.js)</span>
+        <span className="underline">React (Next.js)</span> and{" "}
+        <span className="underline">Express</span>
       </motion.h1>
       <motion.div
         className="flex justify-center gap-2 px-4 items-center flex-col sm:flex-row text-lg font-medium"

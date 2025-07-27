@@ -28,29 +28,31 @@ export const About = () => {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3 md:text-lg leading-8 md:!leading-9 ">
-        After graduating with a degree in{" "}
-        <span className="font-medium">Accounting</span>, I decided to pursue my
-        passion for programming. I enrolled in a coding bootcamp and learned{" "}
-        <span className="font-medium">full-stack web development</span>.{" "}
-        <span className="italic">My favorite part of programming</span> is the
-        problem-solving aspect. I <span className="underline">love</span> the
-        feeling of finally figuring out a solution to a problem. My core stack
-        is{" "}
+        After discovering web development in{" "}
+        <span className="font-medium">9th grade</span>, I became hooked on
+        creating websites with <span className="font-medium">HTML and CSS</span>
+        . Later, I turned my interest in computers into a focused coding
+        journey—learning from
+        <span className="font-medium">YouTube, Udemy (Angela Yu)</span>, and
+        <span className="font-medium">Harkirat Singh&apos;s Cohort 3.0</span>. I
+        enjoy working with
         <span className="font-medium">
-          React, Next.js, Node.js, and MongoDB
+          React, Next.js, Express, TypeScript, Prisma, MongoDB, Turborepo, and
+          Supabase
         </span>
-        . I am also familiar with TypeScript and Prisma. I am always looking to
-        learn new technologies. I am currently looking for a{" "}
-        <span className="font-medium">full-time position</span> as a software
-        developer.
+        . <span className="italic">My favorite project so far</span> is an{" "}
+        <span className="font-medium"> AI image generator</span> that lets users
+        create and train models on their own images.{" "}
+        <span className="italic">What excites me most</span> is building
+        powerful things from just code. Right now, I&apos;m looking for a{" "}
+        <span className="font-medium">full-stack web developer role</span> at a
+        fast-paced startup, where I can keep growing and building cool products.
       </p>
       <p className="md:text-lg leading-8 md:!leading-9 ">
-        <span className="italic">When I'm not coding</span>, I enjoy playing
-        video games, watching movies, and playing with my dog. I also enjoy{" "}
-        <span className="font-medium">learning new things</span>. I am currently
-        learning about{" "}
-        <span className="font-medium">history and philosophy</span>. I'm also
-        learning how to play the guitar.
+        <span className="italic">Outside tech</span>, I love{" "}
+        <span className="font-medium">singing</span> and going to the{" "}
+        <span className="font-medium">gym</span>. I&apos;m always curious and
+        enjoy learning new things.
       </p>
     </motion.section>
   );
