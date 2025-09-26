@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 import ThemeSwitchBtn from "@/components/ThemeSwitchBtn";
 import { ThemeSwitchContextProvider } from "@/context/ThemeSwitchContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -64,6 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth ">
+      <Analytics />
       <body
         className={`${interSans.variable} antialiased  bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90  `}
       >
