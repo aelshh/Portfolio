@@ -66,6 +66,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth ">
       <Analytics />
+      <head>
+        <script
+          id="vtag-ai-js"
+          async
+          src="https://r2.leadsy.ai/tag.js"
+          data-pid="1yujGUR7Kr9V8sanS"
+          data-version="062024"
+        ></script>
+      </head>
       <body
         className={`${interSans.variable} antialiased  bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90  `}
       >
