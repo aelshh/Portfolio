@@ -56,43 +56,43 @@ export const projectsData = [
 
     imageUrl: picmeAi,
   },
-  {
-    title: "Bombay Vogue",
-    description:
-      "Bombay Vogue is a premium men's apparel e-commerce store built on Shopify, offering stylish and high-quality clothing for the modern man. ",
-    tags: [
-      "Shopify",
-      "E-commerce",
-      "Menswear",
-      "Fashion",
-      "Apparel Store",
-      "SEO",
-      "UI/UX",
-      "Tailwind CSS v4",
-      "ShadCn UI",
-      "Responsive Design",
-    ],
-    projectUrl: "https://bombayvogue.in/",
-    imageUrl: bombayVogue,
-  },
-  {
-    title: "Trendzila",
-    description:
-      "Trendzila is a modern men's apparel e-commerce store delivering trendy, affordable, and stylish clothing for the fashion-forward man. Built on Shopify, ",
-    tags: [
-      "Shopify",
-      "E-commerce",
-      "Menswear",
-      "Fashion",
-      "Trendy Apparel",
-      "Affordable Clothing",
-      "SEO",
-      "UI/UX",
-      "Responsive Design",
-    ],
-    projectUrl: "https://trendzila.in/",
-    imageUrl: trendzila,
-  },
+  // {
+  //   title: "Bombay Vogue",
+  //   description:
+  //     "Bombay Vogue is a premium men's apparel e-commerce store built on Shopify, offering stylish and high-quality clothing for the modern man. ",
+  //   tags: [
+  //     "Shopify",
+  //     "E-commerce",
+  //     "Menswear",
+  //     "Fashion",
+  //     "Apparel Store",
+  //     "SEO",
+  //     "UI/UX",
+  //     "Tailwind CSS v4",
+  //     "ShadCn UI",
+  //     "Responsive Design",
+  //   ],
+  //   projectUrl: "https://bombayvogue.in/",
+  //   imageUrl: bombayVogue,
+  // },
+  // {
+  //   title: "Trendzila",
+  //   description:
+  //     "Trendzila is a modern men's apparel e-commerce store delivering trendy, affordable, and stylish clothing for the fashion-forward man. Built on Shopify, ",
+  //   tags: [
+  //     "Shopify",
+  //     "E-commerce",
+  //     "Menswear",
+  //     "Fashion",
+  //     "Trendy Apparel",
+  //     "Affordable Clothing",
+  //     "SEO",
+  //     "UI/UX",
+  //     "Responsive Design",
+  //   ],
+  //   projectUrl: "https://trendzila.in/",
+  //   imageUrl: trendzila,
+  // },
 ];
 
 export const skills = [
