@@ -12,10 +12,7 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    files: ["**/*/.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
-    plugins: {
-      react: reactPlugin,
-    },
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     rules: {
       "react/no-escaped-entities": "off",
     },

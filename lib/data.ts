@@ -1,6 +1,4 @@
 import picmeAi from "@/public/picmeAi.png";
-import bombayVogue from "@/public/bombayVogue.png";
-import trendzila from "@/public/trendzila.png";
 
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";

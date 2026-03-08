@@ -5,7 +5,6 @@ import { useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 type ProjectCardProps = (typeof projectsData)[0];

@@ -67,7 +67,7 @@ export const Intro = () => {
         }}
         className="mb-10 text-2xl sm:text-4xl !leading-[1.5] mt-5   px-4"
       >
-        <span className="font-bold">Hello I'm Adarsh.</span> I'm a{" "}
+        <span className="font-bold">Hello I&apos;m Adarsh.</span> I&apos;m a{" "}
         <span className="font-bold">Full-Stack Developer</span>. I enjoy
         building <span className="italic">sites & apps</span> with{" "}
         <span className="underline">React (Next.js)</span> and{" "}
