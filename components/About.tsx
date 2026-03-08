@@ -28,31 +28,26 @@ export const About = () => {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3 md:text-lg leading-8 md:!leading-9 ">
-        After discovering web development in{" "}
-        <span className="font-medium">9th grade</span>, I became hooked on
-        creating websites with <span className="font-medium">HTML and CSS</span>
-        . Later, I turned my interest in computers into a focused coding
-        journey—learning from
-        <span className="font-medium">YouTube, Udemy (Angela Yu)</span>, and
-        <span className="font-medium">Harkirat Singh&apos;s Cohort 3.0</span>. I
-        enjoy working with
-        <span className="font-medium">
-          React, Next.js, Express, TypeScript, Prisma, MongoDB, Turborepo, and
-          Supabase
-        </span>
-        . <span className="italic">My favorite project so far</span> is an{" "}
-        <span className="font-medium"> AI image generator</span> that lets users
-        create and train models on their own images.{" "}
+        I founded my first startup at 19; it ran for about a year before closing.
+        That experience taught me{" "}
+        <span className="font-medium">entrepreneurship, resilience</span>, and
+        building real-world products. Afterward, I focused on{" "}
+        <span className="font-medium">modern web development</span> and now work
+        with <span className="font-medium">React, Next.js, Express, TypeScript, Node.js, PostgreSQL, MongoDB, and Supabase</span>.
+        I also freelance, building and delivering full-stack web applications.{" "}
+        <span className="italic">My favorite project</span> is{" "}
+        <span className="font-medium">PicMe AI</span>—an AI image generation
+        platform where users can create and train models on their own images.{" "}
         <span className="italic">What excites me most</span> is building
-        powerful things from just code. Right now, I&apos;m looking for a{" "}
-        <span className="font-medium">full-stack web developer role</span> at a
-        fast-paced startup, where I can keep growing and building cool products.
+        powerful products from code. I&apos;m open to a{" "}
+        <span className="font-medium">full-stack developer role</span> where I
+        can keep growing and shipping.
       </p>
       <p className="md:text-lg leading-8 md:!leading-9 ">
-        <span className="italic">Outside tech</span>, I love{" "}
-        <span className="font-medium">singing</span> and going to the{" "}
+        <span className="italic">Outside tech</span>, I enjoy{" "}
+        <span className="font-medium">singing</span> and the{" "}
         <span className="font-medium">gym</span>. I&apos;m always curious and
-        enjoy learning new things.
+        like learning new things.
       </p>
     </motion.section>
   );

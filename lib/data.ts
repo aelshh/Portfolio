@@ -36,9 +36,9 @@ export const links = [
 
 export const projectsData = [
   {
-    title: "Picme.AI",
+    title: "PicMe AI",
     description:
-      "Picme AI lets users generate images from prompts and train custom AI image models with their own photos —all through a sleek, easy-to-use platform.",
+      "AI image generation platform that lets users generate images from prompts and train custom AI image models with their own photos—all through a sleek, easy-to-use interface.",
     tags: [
       "TypeScript",
       "Next.js",
@@ -53,7 +53,6 @@ export const projectsData = [
       "Resend",
     ],
     projectUrl: "https://picme-ai.vercel.app/",
-
     imageUrl: picmeAi,
   },
   // {
@@ -96,43 +95,42 @@ export const projectsData = [
 ];
 
 export const skills = [
-  "HTML",
-  "CSS",
   "JavaScript",
   "TypeScript",
+  "Python",
+  "Java",
   "React",
   "Next.js",
+  "HTML",
+  "CSS",
+  "TailwindCSS",
+  "Framer Motion",
   "Node.js",
-  "Express",
-  "MongoDB",
-  "Prisma",
-  "Git",
-  "Tailwind",
-  "Turborepo",
-  "Supabase",
-  "WebSockets",
-  "ws",
+  "Express.js",
+  "REST APIs",
   "PostgreSQL",
-  "SQL",
-  "Replicate",
-  "Stripe",
+  "MongoDB",
+  "Supabase",
+  "ArangoDB",
+  "Git",
+  "Docker",
 ] as const;
 
 export const experiencesData = [
   {
-    title: "Freelance Web Designer & Webflow Specialist",
-    location: "Lucknow, Uttar Pradesh, India",
+    title: "Full Stack Developer",
+    location: "Gopluto.ai · Gurgaon, Haryana",
     description:
-      "Freelanced as a web designer and Webflow specialist, building custom mockups and demos for potential clients, and later transitioned to web development for deeper technical growth.",
+      "Developed frontend pages and UI improvements; built backend APIs and connected them with frontend systems; debugged and resolved backend issues; integrated third-party services such as Fireflies AI for automated meeting transcription and note generation; worked with ArangoDB (graph database) for managing relational data structures.",
     icons: React.createElement(CgWorkAlt),
-    date: "Oct,024 - Feb,2025",
+    date: "Sep 2025 – Jan 2026",
   },
   {
-    title: "Web Developer",
-    location: "Lucknow, Uttar Pradesh, India",
+    title: "Freelance Full Stack Developer",
+    location: "DCverse · Remote",
     description:
-      "Working as a freelance Web Developer, specializing in building responsive, SEO-friendly websites and web applications using modern technologies like React, Next.js, Tailwind CSS, and Shopify. ",
-    icons: React.createElement(FaCode), // from react-icons/fa
-    date: "Feb, 2025 – Present",
+      "Develop full-stack web applications for clients; build responsive frontend interfaces using modern frameworks; develop backend APIs and integrate them with frontend systems; maintain and improve existing web applications.",
+    icons: React.createElement(FaCode),
+    date: "Jan 2026 – Present",
   },
 ];
