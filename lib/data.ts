@@ -90,7 +90,7 @@ export const projectsData = [
       "Replicate API",
     ],
     projectUrl: "https://www.cloneos.io/",
-    imageUrl: cloneOs,
+    imageUrl: cloneOs,  
   },
   // {
   //   title: "Bombay Vogue",
