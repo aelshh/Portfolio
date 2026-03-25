@@ -1,4 +1,6 @@
 import picmeAi from "@/public/picmeAi.png";
+import aura from "@/public/aura.png";
+import cloneOs from "@/public/clone.png";
 
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
@@ -34,6 +36,24 @@ export const links = [
 
 export const projectsData = [
   {
+    title: "Aura",
+    description:
+      "Aura is dopamine detox app that helps you to reduce your dopamine levels and improve your mental health with gamifying your habits with identity based levels system",
+    tags: [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Tailwind CSS v4",
+      "ShadCn UI",
+      "Magic UI",
+      "Supabase",
+
+      "Framer Motion",
+    ],
+    projectUrl: "https://aura.adarshchaudhary.in/",
+    imageUrl: aura,
+  },
+  {
     title: "PicMe AI",
     description:
       "AI image generation platform that lets users generate images from prompts and train custom AI image models with their own photos—all through a sleek, easy-to-use interface.",
@@ -52,6 +72,25 @@ export const projectsData = [
     ],
     projectUrl: "https://picme-ai.vercel.app/",
     imageUrl: picmeAi,
+  },
+  {
+    title: "Clone OS",
+    description:
+      "Clone OS is an AI video creation app where users generate short movies and AI videos from prompts—bringing ideas to life fast.",
+    tags: [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Tailwind CSS v4",
+      "ShadCn UI",
+      "Magic UI",
+      "Node.js",
+      "Express.js",
+      "Razorpay",
+      "Replicate API",
+    ],
+    projectUrl: "https://www.cloneos.io/",
+    imageUrl: cloneOs,
   },
   // {
   //   title: "Bombay Vogue",
