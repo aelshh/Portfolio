@@ -15,7 +15,7 @@ export const ThemeContext = createContext<ThemeContextType | null>(null);
 export const ThemeSwitchContextProvider = ({
   children,
 }: ThemeSwitchContextProps) => {
-  const [theme, setTheme] = useState<Theme>("Light");
+  const [theme, setTheme] = useState<Theme>("Dark");
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem("theme") as Theme | null;
@@ -24,6 +24,8 @@ export const ThemeSwitchContextProvider = ({
       setTheme(localTheme);
       if (localTheme === "Dark") {
         document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
       }
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("Dark");

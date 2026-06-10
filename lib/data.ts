@@ -160,7 +160,7 @@ export const experiencesData = [
     description:
       "Developed frontend pages and UI improvements; built backend APIs and connected them with frontend systems; debugged and resolved backend issues; integrated third-party services such as Fireflies AI for automated meeting transcription and note generation; worked with ArangoDB (graph database) for managing relational data structures.",
     icons: React.createElement(CgWorkAlt),
-    date: "Sep 2025 – Jan 2026",
+    date: "Sep 2025 – Present",
   },
   {
     title: "Freelance Full Stack Developer",
@@ -168,6 +168,6 @@ export const experiencesData = [
     description:
       "Develop full-stack web applications for clients; build responsive frontend interfaces using modern frameworks; develop backend APIs and integrate them with frontend systems; maintain and improve existing web applications.",
     icons: React.createElement(FaCode),
-    date: "Jan 2026 – Present",
+    date: "Jan 2026 – Apr 2026",
   },
 ];

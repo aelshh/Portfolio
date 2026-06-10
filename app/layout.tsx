@@ -8,28 +8,35 @@ import Footer from "@/components/Footer";
 import ThemeSwitchBtn from "@/components/ThemeSwitchBtn";
 import { ThemeSwitchContextProvider } from "@/context/ThemeSwitchContext";
 import { Analytics } from "@vercel/analytics/next";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, keywords, pageDescriptions, AUTHOR_NAME } from "@/lib/seo";
+import { generateHomeSchema } from "@/lib/json-ld";
 
 const interSans = Inter({
-  variable: "--font-inter-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Adarsh Chaudhary | Full-Stack Web Developer from India",
-  description:
-    "I'm Adarsh, a full-stack web developer based in India, specializing in building modern, high-performance web applications with Next.js, Prisma, React, Node.js, TypeScript, and PostgreSQL. I create scalable solutions that deliver great user experiences. Explore my portfolio to see my latest projects and how I bring ideas to life through code.",
+  title: {
+    default: `${AUTHOR_NAME} | Full-Stack Web Developer & Freelance Next.js Developer India`,
+    template: `%s | ${AUTHOR_NAME}`,
+  },
+  description: pageDescriptions.home,
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Adarsh Chaudhary | Full-Stack Web Developer from India",
-    description:
-      "See projects and achievements from Adarsh, a modern full-stack developer using Next.js, TypeScript, React, and more.",
-    url: "https://adarshchaudhary.in",
-    siteName: "Adarsh Chaudhary Portfolio",
+    title: `${AUTHOR_NAME} | Freelance Full-Stack Web Developer India`,
+    description: pageDescriptions.home,
+    url: SITE_URL,
+    siteName: `${AUTHOR_NAME} Portfolio`,
     images: [
       {
-        url: "/public/picofme.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Adarsh Chaudhary - Full-Stack Web Developer Portfolio",
+        alt: `${AUTHOR_NAME} - Full-Stack Web Developer Portfolio`,
       },
     ],
     locale: "en_IN",
@@ -37,34 +44,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adarsh Chaudhary | Full-Stack Web Developer Portfolio",
-    description:
-      "Portfolio of Adarsh, full-stack developer building modern web apps with React, Next.js, and TypeScript.",
-    images: ["/public/picofme.png"],
+    title: `${AUTHOR_NAME} | Full-Stack Web Developer`,
+    description: pageDescriptions.home,
+    images: ["/opengraph-image"],
   },
-  keywords: [
-    "Full-Stack Developer",
-    "Next.js",
-    "React Developer",
-    "TypeScript",
-    "Portfolio",
-    "Web Developer India",
-    "Adarsh Chaudhary",
-    "JavaScript",
-    "MongoDB",
-    "PostgreSQL",
-    "Prisma",
-    "Node.js",
-  ],
-  authors: [{ name: "Adarsh Chaudhary", url: "https://adarshchaudhary.in" }],
+  keywords: [...keywords],
+  authors: [{ name: AUTHOR_NAME, url: SITE_URL }],
+  robots: { index: true, follow: true },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const homeSchema = generateHomeSchema();
+
   return (
-    <html lang="en" className="!scroll-smooth ">
+    <html lang="en" className="!scroll-smooth">
       <Analytics />
       <head>
         <script
@@ -74,26 +71,34 @@ export default function RootLayout({
           data-pid="1yujGUR7Kr9V8sanS"
           data-version="062024"
         ></script>
+        <link rel="canonical" href={SITE_URL} />
       </head>
       <body
-        className={`${interSans.variable} antialiased  bg-gray-50 text-gray-950   relative  h-[1000px] pt-28 sm:pt-36  dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90  `}
+        className={`${interSans.variable} antialiased bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark relative`}
       >
-        <div
-          className={`bg-[#fbe2e3] absolute top-[-6rem] right-[11rem] w-[31.25rem] h-[31.25rem]  -z-10 rounded-full  blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]`}
-        ></div>
-        <div
-          className={`bg-[#dbd7fb] absolute top-[-1rem] left-[-35rem] w-[31.25rem]  -z-10 h-[50rem] blur-[10rem] rounded-full sm:w-[68.75rem]  md:left-[-33rem] lg:left-[-28rem] xl:left-[15rem] 2xl:left-[-5rem] dark:bg-[#676394]  `}
-        ></div>
+        <div className="noise-overlay" />
+        <div className="fixed inset-0 gradient-mesh-light dark:gradient-mesh-dark pointer-events-none -z-10" />
 
         <ThemeSwitchContextProvider>
           <ActiveSectionContextProvider>
             <Header />
             {children}
+            <Footer />
           </ActiveSectionContextProvider>
-          <Footer />
-          <Toaster position="bottom-right" />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#141416",
+                color: "#fafafa",
+                border: "1px solid #27272a",
+              },
+            }}
+          />
           <ThemeSwitchBtn />
         </ThemeSwitchContextProvider>
+
+        <JsonLd data={homeSchema} />
       </body>
     </html>
   );

@@ -1,63 +1,68 @@
 "use client";
 
-import React from "react";
-import { SectionHeading } from "./SectionHeading";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import SectionHeading from "@/components/SectionHeading";
 import { experiencesData } from "@/lib/data";
-
 import { useSectionInView } from "@/lib/hooks";
-import { useThemeContext } from "@/context/ThemeSwitchContext";
 
-export const Experience = () => {
-  const { theme } = useThemeContext();
+function TimelineItem({
+  experience,
+}: {
+  experience: (typeof experiencesData)[0];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "0.8 1"],
+  });
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
 
-  const { ref } = useSectionInView("Experience", 0.3);
   return (
-    <section
+    <motion.div
       ref={ref}
-      id="experience"
-      className="text-center scroll-mt-28 mb-28 sm:mb-40"
+      style={{ scale: scaleProgress, opacity: opacityProgress }}
+      className="relative pl-8 pb-12 last:pb-0"
     >
-      <SectionHeading>My experience</SectionHeading>
-      <VerticalTimeline lineColor="">
-        {experiencesData.map((item, index) => (
-          <React.Fragment key={index}>
-            <VerticalTimelineElement
-              contentStyle={{
-                background:
-                  theme === "Light" ? "f3f4f6" : "rgba(255,255,255,0.05)",
-                boxShadow: "none",
-                border: "1px solid rgba(0, 0, 0, 0.05)",
-                textAlign: "left",
-                padding: "1.3rem 2rem",
-              }}
-              contentArrowStyle={{
-                borderRight:
-                  theme === "Light"
-                    ? "0.4rem solid #9ca3af"
-                    : "0.4rem solid rgba(255, 255, 255, 0.5",
-              }}
-              date={item.date}
-              icon={item.icons}
-              iconStyle={{
-                background:
-                  theme === "Light" ? "white" : "rgba(255,255, 255, 0.15)",
-                fontSize: "1.5rem",
-              }}
-            >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="!font-normal !mt-0"> {item.location}</p>
-              <p className="!font-normal  text-gray-700 dark:text-white/75">
-                {item.description}
-              </p>
-            </VerticalTimelineElement>
-          </React.Fragment>
-        ))}
-      </VerticalTimeline>
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-border-light dark:bg-border-dark" />
+      <div className="absolute left-[-4px] top-1 w-[9px] h-[9px] rounded-full bg-accent border-2 border-bg-light dark:border-bg-dark" />
+
+      <div className="p-5 rounded-2xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <h3 className="text-lg font-semibold">{experience.title}</h3>
+            <p className="text-sm text-muted-light dark:text-muted-dark">
+              {experience.location}
+            </p>
+          </div>
+          <span className="shrink-0 font-mono text-xs text-accent dark:text-accent-muted px-2 py-1 rounded-md bg-accent/10">
+            {experience.date}
+          </span>
+        </div>
+        <p className="text-sm text-muted-light dark:text-muted-dark leading-relaxed">
+          {experience.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+export function Experience() {
+  const { ref } = useSectionInView("Experience");
+
+  return (
+    <section ref={ref} id="experience" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-3xl px-4">
+        <SectionHeading number="04" title="Experience" sectionName="Experience" />
+
+        <div className="mt-12">
+          {experiencesData.map((exp, index) => (
+            <TimelineItem key={index} experience={exp} index={index} />
+          ))}
+        </div>
+      </div>
     </section>
   );
-};
+}

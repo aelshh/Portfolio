@@ -1,112 +1,142 @@
 "use client";
-import React from "react";
-import { SectionHeading } from "@/components/SectionHeading";
-import { FaPhone, FaWhatsapp } from "react-icons/fa";
+
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { HiPhone, HiMail, HiPaperAirplane } from "react-icons/hi";
+import { FaWhatsapp } from "react-icons/fa";
+import SectionHeading from "@/components/SectionHeading";
 import { useSectionInView } from "@/lib/hooks";
-import sendEmail from "@/actions/sendEmail";
-import FormSubmitBtn from "./FormSubmitBtn";
 import toast from "react-hot-toast";
+import sendEmail from "@/actions/sendEmail";
 
-const Contact = () => {
+export default function Contact() {
   const { ref } = useSectionInView("Contact");
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
 
-  const handleCall = () => {
-    window.open("tel:+918707479934", "_self");
-  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    const formData = new FormData(e.currentTarget);
+    const result = await sendEmail(formData);
+    setSending(false);
 
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/message/Z2RA4ZVK4T4JL1", "_blank");
+    if (result?.error) {
+      toast.error(result.error);
+      return;
+    }
+
+    toast.success("Message sent successfully!");
+    formRef.current?.reset();
   };
 
   return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-      className="text-center w-[min(100%,38rem)] mb-20 sm:mb-28"
-      id="contact"
-    >
-      <SectionHeading>Contact Me</SectionHeading>
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:hello@adarshchaudhary.in">
-          hello@adarshchaudhary.in
-        </a>{" "}
-        or call me at{" "}
-        <a className="underline" href="tel:+918707479934">
-          +91 8707479934
-        </a>{" "}
-        or through the options below
-      </p>
+    <section ref={ref} id="contact" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-3xl px-4">
+        <SectionHeading number="05" title="Get in Touch" sectionName="Contact" />
 
-      {/* Contact Options - Matching Intro Section Style */}
-      <motion.div
-        className="flex justify-center gap-2 px-4 items-center flex-col sm:flex-row text-lg font-medium mt-8"
-        initial={{
-          opacity: 0,
-          y: 100,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.1,
-        }}
-      >
-        {/* Call Button - Primary Style */}
-        <button
-          onClick={handleCall}
-          className="group flex items-center bg-gray-900 px-7 py-3 text-white rounded-full gap-2 hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105 transition"
-        >
-          Call me here{" "}
-          <FaPhone className="opacity-70 group-hover:translate-x-1 transition translate-y-0.5" />
-        </button>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="md:col-span-2 space-y-4"
+          >
+            <p className="text-muted-light dark:text-muted-dark leading-relaxed text-sm">
+              Have a project in mind or just want to chat? I&apos;m always open to
+              new opportunities and ideas.
+            </p>
 
-        {/* WhatsApp Button - Secondary Style */}
-        <button
-          onClick={handleWhatsApp}
-          className="group flex items-center bg-white px-7 py-3 rounded-full gap-2 hover:scale-110 focus:scale-110 active:scale-105 transition border borderBlack dark:bg-white/10 dark:text-white/80"
-        >
-          WhatsApp me{" "}
-          <FaWhatsapp className="opacity-70 group-hover:translate-x-1 transition translate-y-0.5" />
-        </button>
-      </motion.div>
+            <div className="space-y-3">
+              <a
+                href="tel:+918707479934"
+                className="flex items-center gap-3 p-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:border-accent/50 transition-all duration-300 group"
+              >
+                <HiPhone className="w-4 h-4 text-accent shrink-0" />
+                <span className="text-sm group-hover:text-accent transition-colors">
+                  +91 8707479934
+                </span>
+              </a>
+              <a
+                href="mailto:hello@adarshchaudhary.in"
+                className="flex items-center gap-3 p-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:border-accent/50 transition-all duration-300 group"
+              >
+                <HiMail className="w-4 h-4 text-accent shrink-0" />
+                <span className="text-sm group-hover:text-accent transition-colors">
+                  hello@adarshchaudhary.in
+                </span>
+              </a>
+              <a
+                href="https://wa.me/918707479934"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:border-accent/50 transition-all duration-300 group"
+              >
+                <FaWhatsapp className="w-4 h-4 text-accent shrink-0" />
+                <span className="text-sm group-hover:text-accent transition-colors">
+                  WhatsApp
+                </span>
+              </a>
+            </div>
+          </motion.div>
 
-      {/* Email Form */}
-      <form
-        className="mt-10 flex flex-col dark:text-black"
-        action={async (formData) => {
-          const { error } = await sendEmail(formData);
-          if (error) {
-            toast.error(error);
-            return;
-          }
-          toast.success("Email sent successfully");
-        }}
-      >
-        <input
-          type="email"
-          name="senderEmail"
-          required
-          maxLength={500}
-          className="h-14 rounded-lg p-4 borderBlack dark:bg-white/80 dark:focus:bg-white dark:outline-none transition-all"
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-3 rounded-lg p-4 borderBlack dark:bg-white/80 dark:focus:bg-white dark:outline-none transition-all"
-          placeholder="Your message"
-          name="message"
-          required
-          maxLength={500}
-        />
-        <FormSubmitBtn />
-      </form>
-    </motion.section>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="md:col-span-3"
+          >
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <div className="relative">
+                <input
+                  type="email"
+                  name="senderEmail"
+                  required
+                  maxLength={500}
+                  placeholder=" "
+                  className="peer w-full px-4 pt-6 pb-2 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-light dark:text-text-dark focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all duration-300"
+                />
+                <label className="absolute left-4 top-5 text-sm text-muted-light dark:text-muted-dark peer-focus:text-xs peer-focus:top-2 peer-focus:text-accent peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2 transition-all duration-200">
+                  Your email
+                </label>
+              </div>
+              <div className="relative">
+                <textarea
+                  name="message"
+                  required
+                  maxLength={5000}
+                  rows={5}
+                  placeholder=" "
+                  className="peer w-full px-4 pt-6 pb-2 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-light dark:text-text-dark focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-all duration-300 resize-none"
+                />
+                <label className="absolute left-4 top-5 text-sm text-muted-light dark:text-muted-dark peer-focus:text-xs peer-focus:top-2 peer-focus:text-accent peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2 transition-all duration-200">
+                  Your message
+                </label>
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-accent/20"
+              >
+                {sending ? (
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <>
+                    Send Message
+                    <HiPaperAirplane className="w-4 h-4" />
+                  </>
+                )}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default Contact;
+}

@@ -1,61 +1,66 @@
 "use client";
-import { links } from "@/lib/data";
-import React from "react";
+
 import { motion } from "framer-motion";
-import Link from "next/link";
-import clsx from "clsx";
+import { links } from "@/lib/data";
 import useActiveSectionContext from "@/context/ActiveSectionContext";
 
-export const Header = () => {
+export function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
+
   return (
-    <header className="z-[999] relative flex   ">
-      <motion.div
-        className=" w-full h-[4.5rem] fixed top-0 bg-white/80 rounded-none left-1/2  border border-white/40   shadow-lg shadow-black/[0.03]  backdrop-blur-[0.5rem]  sm:top-6 sm:w-[36rem] sm:h-[2.5rem] sm:rounded-full dark:bg-gray-950/75 dark:border-black/70  "
-        initial={{ y: -20, x: "-50%", opacity: 0 }}
-        animate={{ y: 0, x: "-50%", opacity: 1 }}
-      ></motion.div>
-      <nav className="fixed top-[0.15rem] py-2  flex h-12 sm:h-[initial] left-1/2 transform -translate-x-1/2  sm:py-0 sm:top-[1.7rem]">
-        <ul className="flex items-center justify-center  w-[22rem] flex-wrap sm:flex-nowrap gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:gap-5 ">
-          {links.map((link) => (
-            <motion.li
-              className="h-3/4 flex items-center justify-center relative"
-              key={link.hash}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ y: 0, opacity: 1 }}
-            >
-              <Link
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-auto max-w-5xl px-4">
+        <motion.nav
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex items-center justify-center mt-4"
+          aria-label="Main navigation"
+        >
+          <div className="flex items-center gap-1 px-2 py-1.5 rounded-2xl bg-surface-light/70 dark:bg-surface-dark/70 backdrop-blur-xl border border-border-light dark:border-border-dark shadow-sm">
+            {links.map((link) => (
+              <a
+                key={link.hash}
                 href={link.hash}
                 onClick={() => {
                   setActiveSection(link.name);
                   setTimeOfLastClick(Date.now());
                 }}
-                className={clsx(
-                  "w-full flex items-center justify-center hover:text-gray-950  transition px-3 py-1.5 dark:text-gray-500 hover:dark:text-gray-300",
-                  {
-                    "text-gray-950 dark:text-gray-200! ":
-                      activeSection === link.name,
-                  }
-                )}
+                className={`relative px-3 sm:px-4 py-2 text-sm font-medium rounded-xl transition-colors duration-200 ${
+                  activeSection === link.name
+                    ? "text-white"
+                    : "text-muted-light dark:text-muted-dark hover:text-text-light dark:hover:text-text-dark"
+                }`}
+                aria-current={activeSection === link.name ? "true" : undefined}
               >
-                {link.name}
-              </Link>
-              {activeSection === link.name && (
-                <motion.span
-                  className="absolute inset-0 bg-gray-100 -z-1 rounded-full dark:bg-gray-800  "
-                  layoutId="activeSection"
-                  transition={{
-                    type: "spring",
-                    stiffness: 380,
-                    damping: 30,
-                  }}
-                ></motion.span>
-              )}
-            </motion.li>
-          ))}
-        </ul>
-      </nav>
+                {activeSection === link.name && (
+                  <motion.span
+                    layoutId="activeSection"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                    className="absolute inset-0 rounded-xl bg-accent"
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="relative px-3 sm:px-4 py-2 text-sm font-medium rounded-xl bg-accent/10 text-accent dark:text-accent-muted border border-accent/20 hover:bg-accent/20 transition-colors duration-200 ml-1"
+              aria-label="Hire Adarsh Chaudhary for freelance web development"
+            >
+              <span className="relative z-10 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                Hire Me
+              </span>
+            </a>
+          </div>
+        </motion.nav>
+      </div>
     </header>
   );
-};
+}
