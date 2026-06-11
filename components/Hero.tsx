@@ -5,7 +5,6 @@ import Image from "next/image";
 import { HiArrowRight, HiDownload } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { useSectionInView, useTextScramble } from "@/lib/hooks";
-import ThreeBackground from "@/components/ThreeBackground";
 
 const scrambleTexts = [
   "Full-Stack Developer",
@@ -24,8 +23,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <ThreeBackground />
-
       <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}

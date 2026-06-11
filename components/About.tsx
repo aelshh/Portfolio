@@ -20,7 +20,7 @@ export function About() {
     <section
       ref={ref}
       id="about"
-      className="relative py-24 sm:py-32"
+      className="relative py-24 sm:py-32 overflow-hidden"
     >
       <div className="mx-auto max-w-5xl px-4">
         <SectionHeading number="01" title="About Me" sectionName="About" />

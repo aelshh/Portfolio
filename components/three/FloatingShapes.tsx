@@ -69,7 +69,7 @@ export default function FloatingShapes() {
   const isDark = theme === "Dark";
 
   return (
-    <div className="fixed inset-0 pointer-events-none -z-5">
+    <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -5 }}>
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         dpr={[1, 2]}

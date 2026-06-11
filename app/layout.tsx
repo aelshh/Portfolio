@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import ThreeBackground from "@/components/ThreeBackground";
 import { ActiveSectionContextProvider } from "@/context/ActiveSectionContext";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
@@ -61,7 +62,7 @@ export default function RootLayout({
   const homeSchema = generateHomeSchema();
 
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth overflow-x-hidden">
       <Analytics />
       <head>
         <script
@@ -83,6 +84,7 @@ export default function RootLayout({
           <ActiveSectionContextProvider>
             <Header />
             {children}
+            <ThreeBackground />
             <Footer />
           </ActiveSectionContextProvider>
           <Toaster

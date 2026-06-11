@@ -104,7 +104,7 @@ export function Projects() {
     <section
       ref={ref}
       id="projects"
-      className="relative py-24 sm:py-32"
+      className="relative py-24 sm:py-32 overflow-hidden"
       aria-label="Featured projects by Adarsh Chaudhary"
     >
       <div className="mx-auto max-w-5xl px-4">

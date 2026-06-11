@@ -53,7 +53,7 @@ export function Experience() {
   const { ref } = useSectionInView("Experience");
 
   return (
-    <section ref={ref} id="experience" className="relative py-24 sm:py-32">
+    <section ref={ref} id="experience" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-3xl px-4">
         <SectionHeading number="04" title="Experience" sectionName="Experience" />
 

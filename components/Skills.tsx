@@ -33,7 +33,7 @@ export default function Skills() {
   const { ref } = useSectionInView("Skills");
 
   return (
-    <section ref={ref} id="skills" className="relative py-24 sm:py-32">
+    <section ref={ref} id="skills" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-5xl px-4">
         <SectionHeading number="02" title="Skills & Technologies" sectionName="Skills" />
 

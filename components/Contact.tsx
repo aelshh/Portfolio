@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <section ref={ref} id="contact" className="relative py-24 sm:py-32">
+    <section ref={ref} id="contact" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-3xl px-4">
         <SectionHeading number="05" title="Get in Touch" sectionName="Contact" />
 
