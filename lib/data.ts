@@ -1,6 +1,7 @@
 import picmeAi from "@/public/picmeAi.png";
 import aura from "@/public/aura.png";
 import cloneOs from "@/public/clone.png";
+import deowi from "@/public/deowi.png";
 
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
@@ -91,6 +92,26 @@ export const projectsData = [
     ],
     projectUrl: "https://www.cloneos.io/",
     imageUrl: cloneOs,  
+  },
+  {
+    title: "Deowi",
+    description:
+      "AI-powered content repurposing platform. Upload a podcast, meeting recording, or lecture, and Deowi automatically generates a complete marketing kit — blog post, newsletter, Twitter/X hooks, LinkedIn posts, chaptered timeline, and SRT subtitles — all from a single recording. Features a three-stage pipeline (transcribe via Deepgram Nova-3, AI generation via OpenRouter/Nvidia Nemotron Ultra 550B, save) running on background BullMQ workers with retry and exponential backoff.",
+    tags: [
+      "Next.js 16",
+      "React 19",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Supabase",
+      "Deepgram Nova-3",
+      "BullMQ",
+      "Upstash Redis",
+      "Docker",
+      "AWS ECS",
+      "Framer Motion",
+    ],
+    projectUrl: "https://deowi.tech",
+    imageUrl: deowi,
   },
   // {
   //   title: "Bombay Vogue",
