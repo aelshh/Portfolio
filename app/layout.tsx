@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
-import ThreeBackground from "@/components/ThreeBackground";
 import { ActiveSectionContextProvider } from "@/context/ActiveSectionContext";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
@@ -12,9 +11,23 @@ import { Analytics } from "@vercel/analytics/next";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, keywords, pageDescriptions, AUTHOR_NAME } from "@/lib/seo";
 import { generateHomeSchema } from "@/lib/json-ld";
+import ClientShell from "@/components/layout/ClientShell";
 
 const interSans = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const syneDisplay = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
@@ -62,9 +75,14 @@ export default function RootLayout({
   const homeSchema = generateHomeSchema();
 
   return (
-    <html lang="en" className="!scroll-smooth overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
       <Analytics />
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="Light"){document.documentElement.classList.add("light")}else if(t==="Dark"){document.documentElement.classList.add("dark")}else if(window.matchMedia("(prefers-color-scheme: light)").matches){document.documentElement.classList.add("light")}else{document.documentElement.classList.add("dark")}}catch(e){document.documentElement.classList.add("dark")}})();`,
+          }}
+        />
         <script
           id="vtag-ai-js"
           async
@@ -75,25 +93,25 @@ export default function RootLayout({
         <link rel="canonical" href={SITE_URL} />
       </head>
       <body
-        className={`${interSans.variable} antialiased bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark relative`}
+        className={`${interSans.variable} ${syneDisplay.variable} ${jetbrainsMono.variable} antialiased bg-base text-text-primary font-sans relative`}
       >
-        <div className="noise-overlay" />
-        <div className="fixed inset-0 gradient-mesh-light dark:gradient-mesh-dark pointer-events-none -z-10" />
+        <div className="noise-overlay" aria-hidden="true" />
 
         <ThemeSwitchContextProvider>
           <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <ThreeBackground />
-            <Footer />
+            <ClientShell>
+              <Header />
+              {children}
+              <Footer />
+            </ClientShell>
           </ActiveSectionContextProvider>
           <Toaster
             position="bottom-right"
             toastOptions={{
               style: {
-                background: "#141416",
-                color: "#fafafa",
-                border: "1px solid #27272a",
+                background: "var(--c-surface)",
+                color: "var(--c-text-1)",
+                border: "1px solid var(--c-border)",
               },
             }}
           />

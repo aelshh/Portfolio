@@ -1,38 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useSectionInView } from "@/lib/hooks";
+import RevealText from "@/components/ui/RevealText";
 
-type SectionHeadingProps = {
+interface SectionHeadingProps {
   number: string;
   title: string;
-  sectionName: string;
-};
+  monoLabel?: string;
+}
 
 export default function SectionHeading({
   number,
   title,
-  sectionName,
+  monoLabel,
 }: SectionHeadingProps) {
-  const { ref } = useSectionInView(sectionName as "About" | "Skills" | "Projects" | "Experience" | "Contact");
-
   return (
-    <div ref={ref} className="relative mb-16 sm:mb-20">
-      <span className="section-number">{number}</span>
-      <div className="relative z-10">
-        <span className="font-mono text-xs tracking-widest uppercase text-accent dark:text-accent-muted">
-          {number.padStart(2, "0")}
+    <div className="relative">
+      <span className="section-number font-display" aria-hidden="true">
+        {number}
+      </span>
+      <RevealText as="h2" size="xl" className="relative z-10 pt-8 mb-4">
+        {title}
+      </RevealText>
+      {monoLabel && (
+        <span className="relative z-10 font-mono text-xs tracking-[0.3em] uppercase text-primary-light">
+          {monoLabel}
         </span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl font-bold tracking-tight mt-2"
-        >
-          {title}
-        </motion.h2>
-      </div>
+      )}
     </div>
   );
 }

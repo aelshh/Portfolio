@@ -24,12 +24,19 @@ export const ThemeSwitchContextProvider = ({
       setTheme(localTheme);
       if (localTheme === "Dark") {
         document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
       } else {
         document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
       }
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("Dark");
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      setTheme("Light");
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   }, []);
 

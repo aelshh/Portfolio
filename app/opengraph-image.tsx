@@ -15,7 +15,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0a0b 0%, #141416 50%, #0a0a0b 100%)",
+          background: "linear-gradient(135deg, #09090b 0%, #18181b 50%, #09090b 100%)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -28,7 +28,7 @@ export default function Image() {
             width: "400px",
             height: "400px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%)",
           }}
         />
         <div
@@ -39,7 +39,7 @@ export default function Image() {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(232,121,249,0.1) 0%, transparent 70%)",
           }}
         />
         <h1
@@ -56,7 +56,7 @@ export default function Image() {
         </h1>
         <p
           style={{
-            color: "#10b981",
+            color: "#e879f9",
             fontSize: 32,
             fontWeight: 500,
             letterSpacing: "0.02em",
