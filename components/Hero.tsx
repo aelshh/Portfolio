@@ -3,11 +3,12 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { gsap } from "gsap";
 import { HiArrowRight, HiDownload } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { useSectionInView, useTextScramble } from "@/lib/hooks";
 import MagneticButton from "@/components/ui/MagneticButton";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const scrambleTexts = [
   "Full-Stack Developer",
@@ -30,19 +31,17 @@ export function Hero() {
     const el = nameRef.current;
     const words = el.querySelectorAll(".hero-word");
 
-    gsap.fromTo(
-      words,
-      { y: 120, opacity: 0, rotateX: 40 },
-      {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 1.2,
-      }
-    );
+    // gsap-free reveal, handled by framer-motion below via CSS offsets instead
+    words.forEach((word, i) => {
+      (word as HTMLElement).style.transition = `all .9s cubic-bezier(.22,1,.36,1) ${0.15 * i + 0.9}s`;
+      (word as HTMLElement).style.transform = "translateY(120px) rotateX(40deg)";
+      (word as HTMLElement).style.opacity = "0";
+      requestAnimationFrame(() => {
+        (word as HTMLElement).style.transform =
+          "translateY(0px) rotateX(0deg)";
+        (word as HTMLElement).style.opacity = "1";
+      });
+    });
   }, []);
 
   return (
@@ -51,6 +50,20 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-28 lg:pt-0"
     >
+      <BackgroundBeams className="opacity-70 dark:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 z-0 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]">
+        <Spotlight
+          className="-top-40 left-0 md:left-60 md:-top-20"
+          fill="#8b5cf6"
+        />
+        <Spotlight
+          className="-top-10 right-0 lg:right-40"
+          fill="#e879f9"
+        />
+      </div>
+
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(139,92,246,0.08),transparent_55%)]" />
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           {/* Left: Text content */}
@@ -63,7 +76,11 @@ export function Hero() {
             >
               <div className="w-12 h-px bg-gradient-to-r from-primary to-accent" />
               <span className="font-mono text-xs tracking-[0.3em] uppercase text-primary-light">
-                Portfolio
+                Hello, I am
+              </span>
+              <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full glass-card text-[10px] font-mono text-accent">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Open to work
               </span>
             </motion.div>
 
@@ -105,8 +122,8 @@ export function Hero() {
               className="text-lg text-text-secondary max-w-lg leading-relaxed"
             >
               I build powerful products from code — full-stack web applications
-              with React, Next.js, Node.js & TypeScript. Available for freelance
-              projects worldwide.
+              with React, Next.js, Node.js &amp; TypeScript. Available for
+              freelance projects worldwide.
             </motion.p>
 
             <motion.div
@@ -121,6 +138,15 @@ export function Hero() {
                 aria-label="Hire Adarsh Chaudhary - Get in touch"
               >
                 Hire Me
+                <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </MagneticButton>
+
+              <MagneticButton
+                href="/resume"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold text-sm hover:bg-primary-dim transition-all duration-300 shadow-lg shadow-primary/20"
+                aria-label="View Adarsh Chaudhary resume"
+              >
+                View Resume
                 <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </MagneticButton>
 
@@ -165,8 +191,9 @@ export function Hero() {
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/10 rounded-full blur-2xl" />
-              <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border border-border">
+              <div className="absolute -inset-6 bg-gradient-to-br from-primary/25 to-accent/15 rounded-full blur-3xl" />
+              <div className="absolute -inset-2 rounded-full border border-primary/20 animate-pulse-slow" />
+              <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border border-border ring-1 ring-primary/20">
                 <Image
                   src="/picofme.png"
                   alt="Adarsh Chaudhary - Full-Stack Web Developer"
@@ -175,10 +202,13 @@ export function Hero() {
                   className="w-full h-full object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-base/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-base/25 via-transparent to-transparent" />
               </div>
-              <div className="absolute bottom-2 right-0 translate-x-1/4 px-4 py-2 rounded-xl glass-card text-xs font-mono text-accent whitespace-nowrap">
+              <div className="absolute bottom-2 right-0 translate-x-1/4 px-4 py-2 rounded-xl glass-card text-xs font-mono text-accent whitespace-nowrap border-primary/20">
                 Available for work
+              </div>
+              <div className="absolute -left-8 top-10 -translate-x-1/4 px-4 py-2 rounded-xl glass-card text-xs font-mono text-text-secondary whitespace-nowrap hidden sm:block">
+                <span className="text-primary-light">$</span> npx adarsh --stack
               </div>
             </div>
           </motion.div>

@@ -26,6 +26,10 @@ export const links = [
   },
 
   {
+    name: "Education",
+    hash: "#education",
+  },
+  {
     name: "Experience",
     hash: "#experience",
   },
@@ -192,3 +196,59 @@ export const experiencesData = [
     date: "Jan 2026 – Apr 2026",
   },
 ];
+
+export const educationData = [
+  {
+    degree: "B.Tech — Computer Science & Engineering",
+    institution: "AKTU — Placeholder University, Lucknow",
+    location: "Lucknow, Uttar Pradesh, India",
+    description:
+      "Focused on software engineering fundamentals, data structures, operating systems, and web technologies. Built several full-stack projects and led college tech events.",
+    duration: "2021 – 2025",
+  },
+  {
+    degree: "Higher Secondary (Science)",
+    institution: "Placeholder Senior Secondary School",
+    location: "Lucknow, Uttar Pradesh, India",
+    description:
+      "Specialized in Physics, Chemistry and Mathematics with a strong record in computer science.",
+    duration: "2019 – 2021",
+  },
+];
+
+export const certificationsData = [
+  {
+    title: "Meta Front-End Developer",
+    issuer: "Meta · Coursera",
+    year: "2024",
+  },
+  {
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Amazon Web Services",
+    year: "2024",
+  },
+  {
+    title: "MongoDB Associate Developer",
+    issuer: "MongoDB University",
+    year: "2024",
+  },
+  {
+    title: "JavaScript Algorithms & Data Structures",
+    issuer: "freeCodeCamp",
+    year: "2023",
+  },
+];
+
+export const achievementsData = [
+  { value: 20, suffix: "+", label: "Projects Shipped" },
+  { value: 4, suffix: "+", label: "AI Products" },
+  { value: 8, suffix: "+", label: "Freelance Clients" },
+  { value: 3, suffix: "+", label: "Years Coding" },
+];
+
+export const skillCategories = {
+  Frontend: ["JavaScript", "TypeScript", "React", "Next.js", "HTML", "CSS", "TailwindCSS", "Framer Motion"],
+  Backend: ["Node.js", "Express.js", "REST APIs", "Python", "Java"],
+  Database: ["PostgreSQL", "MongoDB", "Supabase", "ArangoDB"],
+  "DevOps & Tools": ["Git", "Docker"],
+} as const;

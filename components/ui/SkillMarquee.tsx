@@ -24,7 +24,7 @@ export default function SkillMarquee({
         {doubled.map((skill, i) => (
           <span
             key={`${skill}-${i}`}
-            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium border border-primary/15 bg-primary/5 text-primary-light dark:text-primary-light whitespace-nowrap transition-colors hover:bg-primary/10 hover:border-primary/30 cursor-default"
+            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium border border-primary/15 bg-primary/5 text-primary-light dark:text-primary-light whitespace-nowrap transition-all duration-300 hover:bg-primary/10 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-[0_0_16px_rgba(139,92,246,0.25)] cursor-default"
           >
             {skill}
           </span>

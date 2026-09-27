@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 border-t border-border">
+    <footer className="site-footer relative z-10 border-t border-border">
       <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">

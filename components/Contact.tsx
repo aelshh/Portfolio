@@ -9,6 +9,7 @@ import sendEmail from "@/actions/sendEmail";
 import RevealSection from "@/components/ui/RevealSection";
 import MagneticButton from "@/components/ui/MagneticButton";
 import SectionHeading from "@/components/SectionHeading";
+import { Meteors } from "@/components/ui/meteors";
 
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
@@ -37,9 +38,13 @@ export default function Contact() {
       id="contact"
       className="relative py-24 sm:py-32 overflow-hidden scroll-mt-24"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(217,70,239,0.06),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Meteors number={24} className="opacity-60" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
-          number="05"
+          number="06"
           title="Let's Work Together"
           monoLabel="Get in Touch"
         />
