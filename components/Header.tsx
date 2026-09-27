@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { links } from "@/lib/data";
 import useActiveSectionContext from "@/context/ActiveSectionContext";
-import { HiBars3, HiXMark } from "react-icons/hi2";
+import { HiBars3, HiXMark, HiDocumentText } from "react-icons/hi2";
 
 export function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
@@ -73,6 +73,17 @@ export function Header() {
                 <span className="relative z-10">{link.name}</span>
               </a>
             ))}
+            <a
+              href="/resume"
+              onClick={() => setTimeOfLastClick(Date.now())}
+              className="relative px-4 py-2 text-sm font-medium rounded-xl text-text-primary hover:bg-primary/10 transition-colors duration-200 ml-1"
+              aria-label="Adarsh Chaudhary resume page"
+            >
+              <span className="relative z-10 flex items-center gap-1.5">
+                <HiDocumentText className="w-4 h-4 text-primary-light" />
+                Resume
+              </span>
+            </a>
             <a
               href="#contact"
               onClick={() => setTimeOfLastClick(Date.now())}
@@ -166,6 +177,18 @@ export function Header() {
                       <span className="relative z-10">{link.name}</span>
                     </motion.a>
                   ))}
+                  <motion.a
+                    href="/resume"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: links.length * 0.05 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="relative flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl text-text-primary hover:bg-primary/10 transition-colors duration-200 border-t border-border mt-1 pt-3"
+                    aria-label="Adarsh Chaudhary resume page"
+                  >
+                    <HiDocumentText className="w-4 h-4 text-primary-light" />
+                    Resume
+                  </motion.a>
                 </div>
               </motion.div>
             )}
